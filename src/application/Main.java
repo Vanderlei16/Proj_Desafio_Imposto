@@ -50,12 +50,12 @@ public class Main {
 
 			// Calculo Imposto sobre Renda prestação de Serviços
 				
-			imp_rendserv = impostoSobreServicos(rend_serv) ;
+			imp_rendserv = impostoSobreServicos(rend_serv) ; // Função calculo Imp. RendaServ implementada
 
 			// Calculo Imposto Ganho Capital
-			imp_ganhocap = ganho_cap*0.2;
+						
+			imp_ganhocap = impostoSobreGC(ganho_cap);     // Função calculo Imp. GC implementada
 			
-			//imp_ganhocap = impostoSobreGC(ganho_cap);
 
 			// Imposto Bruto
 			imp_brut = imp_sal + imp_rendserv + imp_ganhocap;
@@ -136,6 +136,12 @@ public class Main {
 
 		public static double impostoSobreServicos(double renda_servic) {
 			return renda_servic * 0.15;
+		}
+		
+		// Imposto sobre Ganho Capital
+
+		public static double impostoSobreGC(double ganho_cap) {
+			return ganho_cap * 0.2;
 		}
 		
 		
