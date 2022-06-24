@@ -49,9 +49,8 @@ public class Main {
 			
 
 			// Calculo Imposto sobre Renda prestação de Serviços
-			imp_rendserv = rend_serv * 0.15;
-			
-			//imp_rendserv = impostoSobreServicos(rend_serv) ;
+				
+			imp_rendserv = impostoSobreServicos(rend_serv) ;
 
 			// Calculo Imposto Ganho Capital
 			imp_ganhocap = ganho_cap*0.2;
@@ -131,6 +130,16 @@ public class Main {
 				return 0.0;
 			}
 		}
+		
+		
+		// Imposto sobre Serviços
+
+		public static double impostoSobreServicos(double renda_servic) {
+			return renda_servic * 0.15;
+		}
+		
+		
+		
 	
 	}
 	 
