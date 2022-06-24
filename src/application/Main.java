@@ -9,7 +9,7 @@ public class Main {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 
-		double imp_sal, imp_rendserv, imp_ganhocap, ded_mededuc, imp_brut, med_educ, sal_anual;
+		double imp_sal, imp_rendserv, imp_ganhocap,  imp_brut,  sal_anual,abatimento;
 		String opcao;
 		
 		System.out.println("********** CALCULO IMPOSTO RENDA ANUAL **********");
@@ -58,22 +58,20 @@ public class Main {
 			
 
 			// Imposto Bruto
-			imp_brut = imp_sal + imp_rendserv + imp_ganhocap;
-			
-			//imp_brut = impostoBrutoTotal(imp_sal,imp_rendserv,imp_ganhocap  );
-			
-			//imp_brut =  impostoBrutoTotal_test(salario , rend_serv , ganho_cap);
+						
+			imp_brut =  impostoBrutoTotal_test(salario , rend_serv , ganho_cap);
 			
 
 			// Calculo Dedução com Gastos Medicos e Educação
 
-			//abatimento = abatimento(gast_med, gast_educ, imp_brut);
+			abatimento = abatimento(gast_med, gast_educ, imp_brut);
 			
-			med_educ = gast_med + gast_educ;
+		  /*	med_educ = gast_med + gast_educ;
 			if (med_educ < imp_brut * 0.3) {
 				ded_mededuc = med_educ;
 			} else
-				ded_mededuc = imp_brut * 0.3; 
+				ded_mededuc = imp_brut * 0.3;*/ 
+			
 
 			// Impressão de teste comentada, por não ser pedida no desafio.
 			/*
@@ -96,13 +94,13 @@ public class Main {
 
 			System.out.println("DEDUÇÕES: ");
 			System.out.printf("Máximo dedutível: %.2f\n", imp_brut * 0.3);
-			System.out.printf("Gastos dedutíveis: %.2f\n", ded_mededuc);
+			System.out.printf("Gastos dedutíveis: %.2f\n", abatimento);
 			System.out.println();
 
 			System.out.println("RESUMO: ");
 			System.out.printf("Imposto bruto total: %.2f\n", imp_brut);
-			System.out.printf("Abatimento: %.2f\n", ded_mededuc);
-			System.out.printf("Imposto devido: %.2f\n", imp_brut - ded_mededuc);
+			System.out.printf("Abatimento: %.2f\n", abatimento);
+			System.out.printf("Imposto devido: %.2f\n", imp_brut - abatimento);
 			System.out.println();
 			sc.nextLine();
 			System.out.print("=> Deseja executar novo calculo de Imposto Renda (S/N): ");
@@ -144,7 +142,27 @@ public class Main {
 			return ganho_cap * 0.2;
 		}
 		
+		// Imposto Bruto total
+
+		public static double impostoBrutoTotal_test(double salario, double rend_serv, double ganho_cap) {
+			if (salario >= 5000.00) {
+				return (salario * 12 * 0.2) + (rend_serv * 0.15) + (ganho_cap * 0.2);
+			} else if (salario >= 3000.00 && salario < 5000.00) {
+				return (salario * 12 * 0.1) + (rend_serv * 0.15) + (ganho_cap * 0.2);
+			} else {
+				return 0.0 + (rend_serv * 0.15) + (ganho_cap * 0.2);
+			}
+		}
 		
+		// Abatimento
+		
+		public static double abatimento(double gast_med, double gast_educ, double imp_brut) {
+			double gastMed_Educ = gast_med + gast_educ;
+			if (gastMed_Educ < imp_brut * 0.3) {
+				return gastMed_Educ;
+			} else
+				return imp_brut * 0.3;
+		}
 		
 	
 	}
