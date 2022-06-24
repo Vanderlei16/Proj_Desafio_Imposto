@@ -34,17 +34,19 @@ public class Main {
 
 			// Calculo imposto sobre Salário
 
-			System.out.println("Dados passados = "+sal_anual+" "+salario );
-			//imp_sal =  impostoSobreSalario(salario);
+			imp_sal =  impostoSobreSalario(salario);    // Função calculo Imp. Salario implementada
 			
 			
 			
-			if (salario >= 5000.00) {
+		/*	if (salario >= 5000.00) {
 			imp_sal = sal_anual * 0.2;
 		} else if (salario >= 3000.00 && salario < 5000.00) {
 			imp_sal = sal_anual * 0.1;
 			} else
-				imp_sal = 0.0;   
+				imp_sal = 0.0;   */
+			
+			
+			
 
 			// Calculo Imposto sobre Renda prestação de Serviços
 			imp_rendserv = rend_serv * 0.15;
@@ -114,6 +116,20 @@ public class Main {
 
 		sc.close();
 		
+		}
+	
+	// ------------------------------------Funçoes-----------------------------------//
+
+		// Imposto sobre salario
+
+		public static double impostoSobreSalario(double salario) {
+			if (salario >= 5000.00) {
+				return salario * 12 * 0.2;
+			} else if (salario >= 3000.00 && salario < 5000.00) {
+				return salario * 12 * 0.1;
+			} else {
+				return 0.0;
+			}
 		}
 	
 	}
